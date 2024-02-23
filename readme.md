@@ -516,6 +516,56 @@ Dans le composant principal App, utilisez les composants passez une valeur pour 
 Lancez votre application pour voir le message personnalisé affiché à l'écran.
 \*/
 
+- MonComponent.jsx
+
+```js
+import React from "react";
+
+const MonComponent = (props) => {
+  console.log(props);
+  return (
+    <div>
+      <h1>Bonjour, {props.name}! MonComponent</h1>
+    </div>
+  );
+};
+
+export default MonComponent;
+```
+
+- App.js
+
+```js
+import React from "react";
+import MonComponent from "./MonComponent";
+import MonComposantClass from "./MonComposantClass";
+
+function App() {
+  return (
+    <>
+      <MonComponent name="Abdelhakim" />
+      <MonComposantClass name="Abdelhakim" />
+    </>
+  );
+}
+
+export default App;
+```
+
+- MonComposantClass.jsx
+
+```js
+import React from "react";
+
+class MonComposantClass extends React.Component {
+  render() {
+    return <h1>Bonjour, {this.props.name}! MonComposantClass </h1>;
+  }
+}
+
+export default MonComposantClass;
+```
+
 # 5-state.js
 
 /\*
@@ -539,3 +589,25 @@ Lorsque l'utilisateur clique sur "Augmenter", augmentez la valeur de count de 1.
 Lorsque l'utilisateur clique sur "Diminuer", diminuez la valeur de count de 1.
 Lorsque l'utilisateur clique sur "Réinitialiser", réinitialisez count à 0.
 \*/
+
+
+## 2-Intereupteur.js 
+
+prevState
+Lorsque vous voulez mettre à jour le state en fonction de la valeur précédente du state, 
+il est recommandé d'utiliser la fonction de setState(). 
+Cette fonction une autre fonction qui a pour argument prevState, qui reçoit l'état précédent du state.
+Elle garantit que vous travaillez avec la valeur la plus récente de l'état, 
+surtout si plusieurs setState sont appelés en succession rapide (par exemple, à l'intérieur d'une boucle ou en réponse à plusieurs événements).
+
+ this.setState((prevState) => ({ count: prevState.count + 1 })); 
+
+
+2. Interrupteur On/Off :
+
+Créez un composant de classe qui affiche "Off" initialement (défini dans le state).
+Ajoutez un bouton qui, lorsqu'il est cliqué, change l'affichage entre "On" et "Off" en utilisant this.setState.
+*/
+
+
+
